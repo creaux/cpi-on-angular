@@ -1,0 +1,36 @@
+<mat-card class="login">
+  <h2>Login</h2>
+  <mat-card-content>
+    <form (submit)="submit()" [formGroup]="form">
+
+      <mat-form-field class="login__field">
+        <input
+          matInput
+          placeholder="Email"
+          name="email"
+          type="email"
+          formControlName="email"
+        />
+      </mat-form-field>
+      <mat-error *ngIf="!isEmailValid" class="login__error">
+        Please enter valid username!
+      </mat-error>
+
+      <mat-form-field class="login__field">
+        <input
+          matInput
+          placeholder="Password"
+          name="password"
+          type="password"
+          formControlName="password"
+        />
+      </mat-form-field>
+      <mat-error *ngIf="!!error">
+        {{error | async}}
+      </mat-error>
+
+      <button mat-button class="login__button" [disabled]="!valid">Login</button>
+
+    </form>
+  </mat-card-content>
+</mat-card>
